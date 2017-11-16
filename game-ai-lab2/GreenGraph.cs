@@ -22,6 +22,28 @@ class GreenGraph : Graph {
 
    // ADD MISSING METHODS HERE
 
+    public void AddNode(Node a) {
+        nodes.Add(a,b);
+        for (int i = 0; i < nodes.Count; i++) {
+            List<int> n = new List<int>();
+            n.AddRange(new int[nodes.Count]);
+            adjMatrix.Add(n);
+        }
+    }
+
+	public void AddEdge(Node a, Node b, int c) {}
+
+	public List<Node> Nodes() {
+		return new List<Node>();
+	}
+
+	public List<Node> Neighbours(Node a) {
+		return new List<Node>();
+	}     
+
+	public int Cost(Node a, Node b) {
+		return 1;
+	}
 
 
    public void Write() {

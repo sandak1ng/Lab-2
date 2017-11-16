@@ -18,31 +18,44 @@ class GreenGraph : Graph {
       adjMatrix = new List<List<int>>();
    }
 
-
-
    // ADD MISSING METHODS HERE
-
+    
     public void AddNode(Node a) {
-        nodes.Add(a,b);
-        for (int i = 0; i < nodes.Count; i++) {
-            List<int> n = new List<int>();
-            n.AddRange(new int[nodes.Count]);
-            adjMatrix.Add(n);
-        }
-    }
-
-	public void AddEdge(Node a, Node b, int c) {}
-
-	public List<Node> Nodes() {
-		return new List<Node>();
+		nodes.Add(a);
+		adjMatrix.Clear();
+		for(int i = 0; i < nodes.Count; i++)
+		{
+			List<int> n = new List<int>();
+			n.AddRange(new int[nodes.Count]);
+			adjMatrix.Add(n);
+		}
 	}
 
-	public List<Node> Neighbours(Node a) {
-		return new List<Node>();
-	}     
+	public void AddEdge(Node a, Node b, int c) {
+		adjMatrix[a.GetHashCode()][b.GetHashCode()] = c;
+	}
 
-	public int Cost(Node a, Node b) {
-		return 1;
+	public List<Node> Nodes()
+	{
+		return nodes;
+	}
+
+	public List<Node> Neighbours(Node a)
+	{
+		List<Node> neighbours = new List<Node>();
+		for (int x = 0; x < nodes.Count; x++)
+		{
+			if (adjMatrix[a.GetHashCode()][x] > 0)
+			{
+				neighbours.Add(nodes[x]);
+			}
+		}
+		return neighbours;
+	}
+
+	public int Cost(Node a, Node b)
+	{
+		return adjMatrix[a.GetHashCode()][b.GetHashCode()];
 	}
 
 

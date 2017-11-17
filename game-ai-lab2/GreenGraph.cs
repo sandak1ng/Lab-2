@@ -14,15 +14,19 @@ class GreenGraph : Graph {
    private List<List<int>> adjMatrix;
 
    public GreenGraph() {
-      nodes = new List<Node>();
+       //Node Array list
+      nodes = new List<Node>(); 
       adjMatrix = new List<List<int>>();
    }
 
    // ADD MISSING METHODS HERE
     
     public void AddNode(Node a) {
-		nodes.Add(a);
+        //Adds node to arraylist
+        nodes.Add(a);
+        //Clears all values in the adjacency matrix
 		adjMatrix.Clear();
+        //Inputs new values inside the adjacency matrix
 		for(int i = 0; i < nodes.Count; i++)
 		{
 			List<int> n = new List<int>();
@@ -37,14 +41,17 @@ class GreenGraph : Graph {
 
 	public List<Node> Nodes()
 	{
+        //Displays the list of nodes
 		return nodes;
 	}
 
 	public List<Node> Neighbours(Node a)
 	{
+        // it looks through the list and adds a node to it
 		List<Node> neighbours = new List<Node>();
 		for (int x = 0; x < nodes.Count; x++)
 		{
+            // if the value is greater than 0, then it is added to the neighbour list
 			if (adjMatrix[a.GetHashCode()][x] > 0)
 			{
 				neighbours.Add(nodes[x]);
